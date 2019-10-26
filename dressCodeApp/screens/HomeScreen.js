@@ -11,10 +11,15 @@ import {
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
+import { Avatar } from "react-native-elements";
+import { Button } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Menu from '../navigation/NavigationMenu'
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
+      <Menu/>
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
@@ -22,13 +27,12 @@ export default function HomeScreen() {
           <Image
             source={
               __DEV__
-                ? require('../assets/images/robot-dev.png')
+                ? require('../assets/images/logos/dressCODE_Final.png')
                 : require('../assets/images/robot-prod.png')
             }
             style={styles.welcomeImage}
           />
         </View>
-
         <View style={styles.getStartedContainer}>
           <DevelopmentModeNotice />
 
@@ -57,6 +61,15 @@ export default function HomeScreen() {
         <Text style={styles.tabBarInfoText}>
           This is a tab bar. You can edit it in:
         </Text>
+
+        <Image
+            source={
+              __DEV__
+                ? require('../assets/images/logos/dressCODE_Final.png')
+                : require('../assets/images/robot-prod.png')
+            }
+            style={styles.welcomeImage}
+          />
 
         <View
           style={[styles.codeHighlightContainer, styles.navigationFilename]}>
