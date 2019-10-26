@@ -4,9 +4,9 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import AllansScreen from '../screens/AllansScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import DiscoverScreen from '../screens/DiscoverScreen';
+import MoreScreen from '../screens/MoreScreen';
+import SavedScreen from '../screens/SavedScreen';
 
 
 const config = Platform.select({
@@ -28,8 +28,8 @@ HomeStack.navigationOptions = {
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          ? `ios-home${focused ? '' : '-outline'}`
+          : 'md-home'
       }
     />
   ),
@@ -37,59 +37,59 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const LinksStack = createStackNavigator(
+const DiscoverStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Discover: DiscoverScreen,
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+DiscoverStack.navigationOptions = {
+  tabBarLabel: 'Discover',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-search' : 'md-search'} />
   ),
 };
 
-LinksStack.path = '';
+DiscoverStack.path = '';
 
-const AllansStack = createStackNavigator(
+const MoreStack = createStackNavigator(
   {
-    Allans: AllansScreen,
+    More: MoreScreen,
   },
   config
 );
 
-AllansStack.navigationOptions = {
-  tabBarLabel: 'Allans',
+MoreStack.navigationOptions = {
+  tabBarLabel: 'Try it',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-play' : 'md-play'}/>
   ),
 };
 
-AllansStack.path = '';
+MoreStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const SavedStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Saved: SavedScreen,
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+SavedStack.navigationOptions = {
+  tabBarLabel: 'Favourites',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-star' : 'md-star'} />
   ),
 };
 
-SettingsStack.path = '';
+SavedStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  AllansStack,
-  SettingsStack,
+  DiscoverStack,
+  MoreStack,
+  SavedStack,
 });
 
 tabNavigator.path = '';
