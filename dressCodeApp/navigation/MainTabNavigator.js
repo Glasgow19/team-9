@@ -5,7 +5,9 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
+import AllansScreen from '../screens/AllansScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -51,6 +53,22 @@ LinksStack.navigationOptions = {
 
 LinksStack.path = '';
 
+const AllansStack = createStackNavigator(
+  {
+    Allans: AllansScreen,
+  },
+  config
+);
+
+AllansStack.navigationOptions = {
+  tabBarLabel: 'Allans',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+  ),
+};
+
+AllansStack.path = '';
+
 const SettingsStack = createStackNavigator(
   {
     Settings: SettingsScreen,
@@ -70,6 +88,7 @@ SettingsStack.path = '';
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
   LinksStack,
+  AllansStack,
   SettingsStack,
 });
 
