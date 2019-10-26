@@ -1,14 +1,14 @@
-from django.contrib.auth.models import User, Group
 from rest_framework import serializers
+from quickstart.models import Person, Thing
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class PersonSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'groups']
+        model = Person
+        fields = ['id', 'fst_nm', 'snd_nm', 'thing_set']
 
 
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
+class ThingSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Group
-        fields = ['url', 'name']
+        model = Thing
+        fields = ['id', 'owner']

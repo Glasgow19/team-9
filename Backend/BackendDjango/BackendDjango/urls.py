@@ -18,11 +18,16 @@ from django.urls import path
 
 from django.urls import include, path
 from rest_framework import routers
-from quickstart import views
+from quickstart.views import PersonViewSet, ThingViewSet
+from MainApp import views
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
+router.register(r'people', PersonViewSet)
+router.register(r'things', ThingViewSet)
+router.register(r'subjects', views.SubjectViewSet)
+router.register(r'contents', views.ContentViewSet)
+router.register(r'articles', views.ArticleViewSet)
+router.register(r'actualusers', views.ActualUserViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
