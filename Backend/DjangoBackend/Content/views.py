@@ -1,7 +1,12 @@
-from Content.models import Content, Article, Event
-from Content.serializers import ContentSerializer, ArticleSerializer, EventSerializer
+from Content.models import Subject, Content, Article, Event
+from Content.serializers import SubjectSerializer, ContentSerializer, ArticleSerializer, EventSerializer
 
 from DjangoBackend.router import MyOwnViewSet
+
+
+class SubjectViewSet(MyOwnViewSet):
+    queryset = Subject.objects.all()
+    serializer_class = SubjectSerializer
 
 
 class ContentViewSet(MyOwnViewSet):

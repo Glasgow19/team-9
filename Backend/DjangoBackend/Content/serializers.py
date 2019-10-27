@@ -1,5 +1,11 @@
 from rest_framework import serializers
-from Content.models import Content, Article, Event
+from Content.models import Subject, Content, Article, Event
+
+
+class SubjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subject
+        fields = ['id', 'name']
 
 
 class ContentSerializer(serializers.ModelSerializer):

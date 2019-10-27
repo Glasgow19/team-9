@@ -53,13 +53,13 @@ class Content(models.Model):
 ################################################################################
 # Article
 class Article(Content):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
     title_picture = models.ImageField(upload_to="static/upload_pictures/%Y/%m/%d/%H:%M:%S", blank=True)
     text = models.TextField()
 
 # Event
 class Event(Content):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
     description = models.TextField()
     date_time = models.DateTimeField()
 
@@ -73,13 +73,13 @@ class Question(models.Model):
     correct_answer = models.OneToOneField(Answer, on_delete=None, related_name="mother_question")
 
 class Quiz(Content):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
     questions = models.ManyToManyField(Question)
 
 # Media and it's subtypes
 class Media(Content):
     media_type = "M"
-    description = models.CharField(max_length=50)
+    description = models.CharField(max_length=100)
 
 class Image(Media):
     media_type = "I"
