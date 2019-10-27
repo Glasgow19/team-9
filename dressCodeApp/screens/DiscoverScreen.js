@@ -7,11 +7,12 @@ import { StackNavigator } from 'react-navigation';
 class DiscoverScreen extends React.Component {
   render(){
     return (  
-      <View>
+      <View style={styles.container}>
         <Menu/>
           <ScrollView style={styles.scrollView}>
               {
                 tabs.map((l,i) => 
+                  <View style={styles.forcedStyles}>
                   <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Home')}>
                   <Card
                     title={<Text h4 style={{fontSize: 42, textAlign: 'center'}}>{l.title}</Text>}
@@ -23,6 +24,7 @@ class DiscoverScreen extends React.Component {
                     </Text>
                   </Card>  
                   </TouchableWithoutFeedback>
+                  </View>
                 )
               }
           </ScrollView>    
@@ -38,19 +40,21 @@ DiscoverScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
     backgroundColor: '#fff',
   },
   scrollView: {
     backgroundColor: '#fff',
     marginLeft: 5,
     marginRight: 5,
-    marginBottom: 110
+    marginBottom: 10
   },
   text: {
     fontSize: 42,
     textAlign: 'center'
   },
+  forcedStyles: {
+    backgroundColor: 'transparent',
+  }
 });
 
 const tabs = [
