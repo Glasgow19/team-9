@@ -17,15 +17,16 @@ import { Card } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Menu from '../navigation/NavigationMenu';
 
+
 export default function HomeScreen() {
 
   const users = [
    {
-      name: 'brynn',
+      name: 'Lorem Ipsum',
       avatar: '../assets/images/robot-dev.png'
    },
    {
-      name: 'sarah',
+      name: 'Kpsuu Joree',
       avatar: '../assets/images/access-business-computer-3059745.jpg'
    },
   ]
@@ -44,7 +45,7 @@ export default function HomeScreen() {
               imageStyle={{overflow: 'hidden'}}
               imageWrapperStyle={{overflow: 'hidden'}}
               containerStyle={styles.cardLoopContainer}>
-              <Text style={{textAlign: 'center', fontSize: 26, marginBottom: 10}}>
+              <Text style={{textAlign: 'center', fontSize: 18, marginBottom: 10}}>
                 {l.name}
               </Text>
             </Card>  
