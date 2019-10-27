@@ -20,7 +20,7 @@ class DiscoverScreen extends React.Component {
                 color: "#fff", 
                 fontSize: "1.5em",
                 fontWeight: "bold",
-                lineHeight: "2em",
+                lineHeight: 40,
                 textAlign: 'center', 
                 backgroundColor:"#f9b222"}}>{l.title}</Text>}
               image={<Image

@@ -63,9 +63,9 @@ class ArticlePreview extends Component {
               flexDirection='column'
               title={<Text h4 style={{
                 color: "#fff", 
-                fontSize: "1.5em",
+                fontSize: 25,
                 fontWeight: "bold",
-                lineHeight: "2em",
+                lineHeight: 40,
                 textAlign: 'center', 
                 backgroundColor:"#ED6B4B"}}>{this.state.title}</Text>}
               image={<Image
