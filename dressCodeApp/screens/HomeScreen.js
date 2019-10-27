@@ -15,19 +15,21 @@ import { Avatar } from "react-native-elements";
 import { Button } from 'react-native-elements';
 import { Card } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Menu from '../navigation/NavigationMenu'
+import Menu from '../navigation/NavigationMenu';
 
 export default function HomeScreen() {
+
   const users = [
    {
       name: 'brynn',
-      avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg'
+      avatar: '../assets/images/robot-dev.png'
    },
    {
       name: 'sarah',
-      avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/138.jpg'
+      avatar: '../assets/images/access-business-computer-3059745.jpg'
    },
   ]
+
   return (
     <View style={styles.container}>
       <Menu/>
@@ -38,18 +40,13 @@ export default function HomeScreen() {
           users.map((l,i) => 
             <Card
               flexDirection='column'
-              image={require('../assets/images/robot-dev.png')}
+              image={require('../assets/images/access-business-computer-3059745.jpg')}
               imageStyle={{overflow: 'hidden'}}
               imageWrapperStyle={{overflow: 'hidden'}}
               containerStyle={styles.cardLoopContainer}>
-              <Text style={{marginBottom: 10}}>
-                The idea with React Native Elements is more about component structure than actual design.
+              <Text style={{textAlign: 'center', fontSize: 26, marginBottom: 10}}>
+                {l.name}
               </Text>
-              <Button
-                icon={<Icon name='code' color='#ffffff' />}
-                style={{ alignItems: 'center'}}
-                buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                title='VIEW NOW' />
             </Card>  
           )
         }
@@ -113,7 +110,9 @@ const styles = StyleSheet.create({
     backgroundColor:'#f9f9f9',
     borderColor:'#f9f9f9',
     maxWidth:720,
+    minWidth:'75%',
     borderRadius: 15,
+    borderWidth: 0,
     shadowColor: '#000',
     shadowOffset: { width: 1, height: 2 },
     shadowOpacity: 0.6,

@@ -1,31 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Menu from '../navigation/NavigationMenu';
-import { View, FlatList, StyleSheet, Dimensions, ScrollView, TouchableWithoutFeedback } from 'react-native'
-import { ListItem, Image, Button, Card, Icon, Text } from 'react-native-elements'
+import { View, FlatList, StyleSheet, Dimensions, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import { ListItem, Image, Button, Card, Icon, Text } from 'react-native-elements';
+import { StackNavigator } from 'react-navigation';
 
-export default function DiscoverScreen() {
-  return (  
-    <View>
-      <Menu/>
-        <ScrollView style={styles.scrollView}>
-            {
-              tabs.map((l,i) => 
-                <TouchableWithoutFeedback onPress={() => alert('Pressed!')}>
-                <Card
-                  title={<Text h4 style={{fontSize: 42, textAlign: 'center'}}>{l.title}</Text>}
-                   image={<Image
-                    source={{ uri: l.picture }}
-                    style={{ width: Dimensions.get('window').width , height: 200}}/>}>
-                  <Text style={{marginBottom: 10}}>
-                    {l.subtitle}
-                  </Text>
-                </Card>  
-                </TouchableWithoutFeedback>
-              )
-            }
-        </ScrollView>    
-    </View>
-  );
+class DiscoverScreen extends React.Component {
+  render(){
+    return (  
+      <View>
+        <Menu/>
+          <ScrollView style={styles.scrollView}>
+              {
+                tabs.map((l,i) => 
+                  <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Home')}>
+                  <Card
+                    title={<Text h4 style={{fontSize: 42, textAlign: 'center'}}>{l.title}</Text>}
+                     image={<Image
+                      source={{ uri: l.picture }}
+                      style={{ width: Dimensions.get('window').width , height: 200}}/>}>
+                    <Text style={{marginBottom: 10}}>
+                      {l.subtitle}
+                    </Text>
+                  </Card>  
+                  </TouchableWithoutFeedback>
+                )
+              }
+          </ScrollView>    
+      </View>
+    );
+  }
 }
 
 DiscoverScreen.navigationOptions = {
@@ -76,3 +79,4 @@ const tabs = [
   },
 ]
 
+export default DiscoverScreen;
