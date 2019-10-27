@@ -145,16 +145,15 @@ export default class SavedScreen extends Component {
 
     render() {
         return(
-
-            <View style={styles.container}>
+          <View style={styles.container}>
             <Menu/>
             <ScrollView style={styles.scrollView} contentContainerStyle={styles.contentContainer}>
             { 
-              this.state.contents.map( function(content, i) {
+              this.state.contents.map(function(content, i) {
                 return <ContentPreview id={content}/>
             })}
             </ScrollView>
-            </View>
+          </View>
         );
     }
 }
