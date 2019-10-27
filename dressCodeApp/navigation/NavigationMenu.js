@@ -28,8 +28,7 @@ export default function NavigationMenu() {
 	            }
 	            style={{ width: 200,
 				    height: 160,
-				    resizeMode: 'contain',
-				    marginLeft: 100, }}
+				    resizeMode: 'contain'}}
 	          />}
 	    	rightComponent={<Image
 	            source={
