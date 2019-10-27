@@ -11,60 +11,49 @@ import {
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
+import { Avatar } from "react-native-elements";
+import { Button } from 'react-native-elements';
+import { Card } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Menu from '../navigation/NavigationMenu'
 
 export default function HomeScreen() {
+  const users = [
+   {
+      name: 'brynn',
+      avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg'
+   },
+   {
+      name: 'sarah',
+      avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/138.jpg'
+   },
+  ]
   return (
     <View style={styles.container}>
+      <Menu/>
       <ScrollView
-        style={styles.container}
+        style={styles.innercontainer}
         contentContainerStyle={styles.contentContainer}>
-        <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
-          />
-        </View>
-
-        <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
-
-          <Text style={styles.getStartedText}>Get started by opening</Text>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
-
-          <Text style={styles.getStartedText}>
-            Change this text and your app will automatically reload.
-          </Text>
-        </View>
-
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
-            </Text>
-          </TouchableOpacity>
-        </View>
+        {
+          users.map((l,i) => 
+            <Card
+              flexDirection='column'
+              image={require('../assets/images/robot-dev.png')}
+              imageStyle={{overflow: 'hidden'}}
+              imageWrapperStyle={{overflow: 'hidden'}}
+              containerStyle={styles.cardLoopContainer}>
+              <Text style={{marginBottom: 10}}>
+                The idea with React Native Elements is more about component structure than actual design.
+              </Text>
+              <Button
+                icon={<Icon name='code' color='#ffffff' />}
+                style={{ alignItems: 'center'}}
+                buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                title='VIEW NOW' />
+            </Card>  
+          )
+        }
       </ScrollView>
-
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
-        </Text>
-
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>
-            navigation/MainTabNavigator.js
-          </MonoText>
-        </View>
-      </View>
     </View>
   );
 }
@@ -111,7 +100,24 @@ function handleHelpPress() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection:'column',
     backgroundColor: '#fff',
+  },
+  innercontainer: {
+    flex:1,
+    backgroundColor: '#fff',
+    marginBottom: 10,
+  },
+  cardLoopContainer: {
+    overflow:'hidden',
+    backgroundColor:'#f9f9f9',
+    borderColor:'#f9f9f9',
+    maxWidth:720,
+    borderRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 1, height: 2 },
+    shadowOpacity: 0.6,
+    shadowRadius: 15,
   },
   developmentModeText: {
     marginBottom: 20,
@@ -122,6 +128,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingTop: 30,
+    alignItems: 'center'
   },
   welcomeContainer: {
     alignItems: 'center',
