@@ -11,7 +11,7 @@ class SubjectSerializer(serializers.ModelSerializer):
 class ContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Content
-        fields = ['id', 'content_type', 'subjects', 'created']
+        fields = ['id', 'content_type']
 
 
 class ArticleSerializer(serializers.ModelSerializer):
