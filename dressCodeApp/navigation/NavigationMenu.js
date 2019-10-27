@@ -22,13 +22,14 @@ export default function NavigationMenu() {
 			    backgroundColor: '#A7358C',
 			    justifyContent: 'space-around',
 			}}
-			leftComponent={<Image
+			centerComponent={<Image
 	            source={
 	            	require('../assets/images/logos/dressCODE_Final_inverted.png')
 	            }
 	            style={{ width: 200,
-				    height: 160,
-				    resizeMode: 'contain'}}
+				    height: 180,
+				    resizeMode: 'contain',
+				}}
 	          />}
 	    	rightComponent={<Image
 	            source={

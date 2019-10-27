@@ -22,6 +22,19 @@ const styles = StyleSheet.create({
         marginRight: 5,
         marginBottom: 110
     },
+    cardLoopContainer: {
+    overflow:'hidden',
+    backgroundColor:'#f9f9f9',
+    borderColor:'#f9f9f9',
+    maxWidth:720,
+    minWidth:'75%',
+    borderRadius: 15,
+    borderWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 1, height: 2 },
+    shadowOpacity: 0.6,
+    shadowRadius: 15,
+  }
 });
 
 
@@ -41,10 +54,7 @@ class ArticlePreview extends Component {
     render() {
         return(
             <Card
-            title={<Text h4 style={{fontSize: 42, textAlign: 'center'}}>{this.state.title}</Text>}
-            image={<Image
-                source={{ uri: this.state.title_picture_url }}
-                style={{ width: Dimensions.get('window').width , height: 200}}/>}>
+            title={<Text h4 style={{fontSize: 42, textAlign: 'center'}}>{this.state.title}</Text>}>
             <Text style={{marginBottom: 10}}>
             { this.state.text }
             </Text>
@@ -57,7 +67,7 @@ class ArticlePreview extends Component {
 class EventPreview extends Component {
     constructor(props) {
         super(props);
-        this.state = { title: "Hello", title_picture_url: "", text: "Ahoj" };
+        this.state = { title: "", date_time: "", description: "" };
         fetch('http://192.168.43.104:8000/events/' + props["id"])
           .then(response => response.json())
           .then(responseJson => this.setState({
@@ -70,10 +80,14 @@ class EventPreview extends Component {
     render() {
         return(
             <Card
-            title={<Text h4 style={{fontSize: 42, textAlign: 'center'}}>{this.state.title}</Text>}
-            image={<Image
-                source={{ uri: this.state.title_picture_url }}
-                style={{ width: Dimensions.get('window').width , height: 200}}/>}>
+            title={<Text h4 style={{
+                color: "#fff", 
+                fontSize: "1.5em",
+                fontWeight: "bold",
+                lineHeight: 40,
+                textAlign: 'center', 
+                backgroundColor:"#f9b222"}}>{this.state.title}</Text>}
+            containerStyle={styles.cardLoopContainer}>
             <Text style={{marginBottom: 10}}>
             { this.state.description }
             </Text>
