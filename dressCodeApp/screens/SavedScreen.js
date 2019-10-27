@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { ExpoConfigView } from '@expo/samples';
 import Menu from '../navigation/NavigationMenu';
-import { View, FlatList, StyleSheet, Dimensions, ScrollView } from 'react-native'
-import { ListItem, Image, Button, Card, Icon, Text } from 'react-native-elements'
+
+import { View, StyleSheet, Dimensions, ScrollView, Image } from 'react-native'
+import { Card, Text } from 'react-native-elements'
+
 import 'whatwg-fetch'
 
 const styles = StyleSheet.create({
@@ -27,12 +28,12 @@ const styles = StyleSheet.create({
 class ArticlePreview extends Component {
     constructor(props) {
         super(props);
-        this.state = { title: "Hello", title_picture: "", text: "Ahoj" };
+        this.state = { title: "Hello", title_picture_url: "", text: "Ahoj" };
         fetch('http://192.168.43.104:8000/articles/' + props["id"])
           .then(response => response.json())
           .then(responseJson => this.setState({
               title: responseJson["title"],
-              title_picture: responseJson["title_picture"],
+              title_picture_url: responseJson["title_picture_url"],
               text: responseJson["text"]
           }));
     }
@@ -42,7 +43,7 @@ class ArticlePreview extends Component {
             <Card
             title={<Text h4 style={{fontSize: 42, textAlign: 'center'}}>{this.state.title}</Text>}
             image={<Image
-                source={{ uri: this.state.title_picture }}
+                source={{ uri: this.state.title_picture_url }}
                 style={{ width: Dimensions.get('window').width , height: 200}}/>}>
             <Text style={{marginBottom: 10}}>
             { this.state.text }
@@ -72,30 +73,6 @@ export default class SavedScreen extends Component {
     }
 }
 
-const tabs = [
-    {
-        key: '1',
-        title: 'Amy Farha',
-        picture: '../assets/images/robot-dev.png',
-        subtitle: 'Vice President'
-    },
-    {
-        key: '2',
-        title: 'Chris Jackson',
-        picture: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-        subtitle: 'Vice Chairman'
-    },
-    {
-        key: '3',
-        title: 'Amy Farhas',
-        picture: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-        subtitle: 'Vice President'
-    },
-    {
-        key: '4',
-        title: 'Chris Jacksons',
-        picture: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-        subtitle: 'Vice Chairman'
-    },
-]
-
+SavedScreen.navigationOptions = {
+  header: null,
+};
