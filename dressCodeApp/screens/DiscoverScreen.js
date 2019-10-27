@@ -8,27 +8,35 @@ class DiscoverScreen extends React.Component {
   render(){
     return (  
       <View style={styles.container}>
-        <Menu/>
-          <ScrollView style={styles.scrollView}>
-              {
-                tabs.map((l,i) => 
-                  <View style={styles.forcedStyles}>
-                  <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Home')}>
-                  <Card
-                    title={<Text h4 style={{fontSize: 42, textAlign: 'center'}}>{l.title}</Text>}
-                     image={<Image
+      <Menu/>
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.contentContainer}>
+        {
+          tabs.map((l,i) => 
+            <Card
+              flexDirection='column'
+              title={<Text h4 style={{
+                color: "#fff", 
+                fontSize: "1.5em",
+                fontWeight: "bold",
+                lineHeight: "2em",
+                textAlign: 'center', 
+                backgroundColor:"#f9b222"}}>{l.title}</Text>}
+              image={<Image
                       source={{ uri: l.picture }}
-                      style={{ width: Dimensions.get('window').width , height: 200}}/>}>
-                    <Text style={{marginBottom: 10}}>
-                      {l.subtitle}
-                    </Text>
-                  </Card>  
-                  </TouchableWithoutFeedback>
-                  </View>
-                )
-              }
-          </ScrollView>    
-      </View>
+                      style={{ width: Dimensions.get('window').width , height: 200}}/>}
+              imageStyle={{overflow: 'hidden', backgroundColor:"#f9f9f9"}}
+              imageWrapperStyle={{overflow: 'hidden'}}
+              containerStyle={styles.cardLoopContainer}>
+              <Text style={{textAlign: 'center', fontSize: 18, marginBottom: 10}}>
+                {l.subtitle}
+              </Text>
+            </Card>  
+          )
+        }
+      </ScrollView>
+    </View>
     );
   }
 }
@@ -40,20 +48,37 @@ DiscoverScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection:'column',
     backgroundColor: '#fff',
   },
-  scrollView: {
+  innercontainer: {
+    flex:1,
     backgroundColor: '#fff',
-    marginLeft: 5,
-    marginRight: 5,
-    marginBottom: 10
+    marginBottom: "20%",
   },
-  text: {
-    fontSize: 42,
-    textAlign: 'center'
+  cardLoopContainer: {
+    overflow:'hidden',
+    backgroundColor:'#f9f9f9',
+    borderColor:'#f9f9f9',
+    maxWidth:720,
+    minWidth:'75%',
+    borderRadius: 15,
+    borderWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 1, height: 2 },
+    shadowOpacity: 0.6,
+    shadowRadius: 15,
   },
-  forcedStyles: {
-    backgroundColor: 'transparent',
+  developmentModeText: {
+    marginBottom: 20,
+    color: 'rgba(0,0,0,0.4)',
+    fontSize: 14,
+    lineHeight: 19,
+    textAlign: 'center',
+  },
+  contentContainer: {
+    paddingTop: 30,
+    alignItems: 'center'
   }
 });
 
