@@ -18,7 +18,8 @@ from django.urls import include, path
 from django.contrib import admin
 from rest_framework.routers import SimpleRouter, Route, DynamicRoute
 
-from Content.views import ContentViewSet, ArticleViewSet, EventViewSet
+from Content.views import SubjectViewSet, ContentViewSet, ArticleViewSet, EventViewSet
+from ActualUsers.views import ActualUserViewSet
 
 
 class MyOwnRouter(SimpleRouter):
@@ -81,9 +82,11 @@ class MyOwnRouter(SimpleRouter):
 
 
 router = MyOwnRouter()
-router.register(r'articles', ArticleViewSet)
+router.register(r'subjects', SubjectViewSet)
 router.register(r'contents', ContentViewSet)
+router.register(r'articles', ArticleViewSet)
 router.register(r'events', EventViewSet)
+router.register(r'actualusers', ActualUserViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

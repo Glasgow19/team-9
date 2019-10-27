@@ -1,5 +1,11 @@
 from rest_framework import serializers
-from Content.models import Content, Article, Event
+from Content.models import Subject, Content, Article, Event
+
+
+class SubjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subject
+        fields = ['id', 'name']
 
 
 class ContentSerializer(serializers.ModelSerializer):
@@ -13,7 +19,7 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ['id', 'subjects', 'created', 'title', 'title_picture_url', 'text']
+        fields = ['id', 'subjects', 'created', 'title', 'title_picture', 'title_picture_url', 'text']
 
     def get_title_picture_url(self, article):
         request = self.context.get('request')
