@@ -30,8 +30,6 @@ export default class SavedScreen extends Component {
     constructor(props) {
         super(props);
 
-        username = "kockahonza"
-
         this.state = { contents: [] }
         fetch('http://192.168.43.104:8000/actualusers/kockahonza/')
           .then(response => response.json())
