@@ -13,7 +13,7 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ['id', 'subjects', 'created', 'title', 'title_picture_url', 'text']
+        fields = ['id', 'subjects', 'created', 'title', 'title_picture', 'title_picture_url', 'text']
 
     def get_title_picture_url(self, article):
         request = self.context.get('request')

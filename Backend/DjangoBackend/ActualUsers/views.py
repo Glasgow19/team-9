@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from ActualUsers.models import ActualUser
+from ActualUsers.serializers import ActualUserSerializer
 
-# Create your views here.
+from DjangoBackend.router import MyOwnViewSet
+
+
+class ActualUserViewSet(MyOwnViewSet):
+    queryset = ActualUser.objects.all()
+    serializer_class = ActualUserSerializer

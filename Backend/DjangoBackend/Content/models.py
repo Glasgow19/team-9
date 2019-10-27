@@ -4,6 +4,9 @@ from django.db import models
 class Subject(models.Model):
     name = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.name
+
 class Content(models.Model):
     subjects = models.ManyToManyField(Subject, blank=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -31,6 +34,18 @@ class Content(models.Model):
         except:
             pass
         return 'U'
+
+    def __str__(self):
+        desc = ''
+        if self.content_type == 'A':
+            desc = self.article.title
+        elif self.content_type == 'E':
+            desc = self.event.title
+        elif self.content_type == 'Q':
+            desc = self.quiz.title
+        elif self.content_type == 'M':
+            desc = self.media.title
+        return "[" + self.content_type + "] "+ desc
 
 
 ################################################################################
@@ -63,7 +78,7 @@ class Quiz(Content):
 
 # Media and it's subtypes
 class Media(Content):
-    media_type = "U"
+    media_type = "M"
     description = models.CharField(max_length=50)
 
 class Image(Media):
